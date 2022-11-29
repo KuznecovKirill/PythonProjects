@@ -1,4 +1,5 @@
 import json
+from animal import Animal
 from mammal import Mammal
 class Dog(Mammal):
     def __init__(self, name = "", age = 0, gender = "", viewDog = ""):

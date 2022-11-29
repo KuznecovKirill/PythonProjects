@@ -13,3 +13,14 @@ class Animal:
 def AnimalSerialize(animal,path):
     with open(path,"w") as outfile:
         json.dump(animal.__dict__,outfile)
+def AnimalDeserialize(pas):
+    def Decode(obj):
+        if "name" in obj:
+            #return Dog(obj["name"],obj["age"],obj["gender"],obj["view"],obj["viewDog"])
+        #elif "view" in obj:
+           # return Mammal(obj["name"],obj["age"],obj["gender"],obj["view"])
+        #else:
+            return Animal(obj["name"],obj["age"],obj["gender"])
+    with open(pas) as json_file:
+        J = json.load(json_file)
+    return Decode(J)
