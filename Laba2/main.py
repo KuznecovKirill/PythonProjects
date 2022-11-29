@@ -4,5 +4,6 @@ from mammal import Mammal
 from dog import Dog
 
 newAnimal = Animal("Джастин",7,"М")
-newMammal = Mammal(newAnimal.name,newAnimal.age,newAnimal.gender,"Обезьяна")
-print(newAnimal,newMammal)
+newMammal = Mammal("Лео",4,"М","Обезьяна")
+print(newAnimal)
+print(newMammal)
