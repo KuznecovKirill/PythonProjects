@@ -1,5 +1,4 @@
 import json
-from mammal import Mammal
 class Animal:
     def __init__(self, name = "", age = 0, gender = ""):
         self.name = name
@@ -9,3 +8,8 @@ class Animal:
         return self.__str__()
     def __str__(self):
         return str(self.__dict__)
+    
+
+def AnimalSerialize(animal,path):
+    with open(path,"w") as outfile:
+        json.dump(animal.__dict__,outfile)
