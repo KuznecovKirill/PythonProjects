@@ -8,4 +8,7 @@ class Mammal(Animal):
         return self.__str__()
     def __str__(self):
         return str(self.__dict__)
-   
+    
+def MammalSerialize(mammal,path):
+    with open(path,"w") as outfile:
+        json.dump(mammal.__dict__,outfile)

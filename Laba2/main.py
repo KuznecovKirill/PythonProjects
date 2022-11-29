@@ -1,7 +1,7 @@
 import json
 from pprint import pprint
 from animal import Animal, AnimalSerialize
-from mammal import Mammal
+from mammal import Mammal, MammalSerialize
 from dog import Dog
 
 newAnimal = Animal("Джастин",7,"М")
@@ -11,3 +11,4 @@ print(newAnimal)
 print(newMammal)
 print(newDog)
 AnimalSerialize(newAnimal,"primer.json")
+MammalSerialize(newMammal,"primer.json")
