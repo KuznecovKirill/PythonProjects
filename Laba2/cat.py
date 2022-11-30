@@ -13,7 +13,7 @@ class Cat(Mammal):
 def CatSerialize(cat,path):
     with open(path,"w") as outfile:
         json.dump(cat.__dict__,outfile)
-def DogDeserialize(pas):
+def CatDeserialize(pas):
     def Decode(obj):
         if "viewCat" in obj:
             return Cat(obj["name"],obj["age"],obj["gender"],obj["viewCat"])
