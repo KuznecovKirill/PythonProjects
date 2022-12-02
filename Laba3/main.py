@@ -1,9 +1,13 @@
 from pyDatalog import pyDatalog 
-#Посчитать сумму ряда [0, 9999999]
+#Посчитать сумму ряда 
 
-pyDatalog.create_terms('arrSum, N')
+pyDatalog.create_terms('arrSum, N, AVS')
 
 arrSum[N] = N + arrSum[N-1]
 arrSum[0] = 1
 
-print(arrSum[9999999]==N)
+print(arrSum[200]==N)
+
+# Среднее значение ряда
+AVS[N] = (N + 1)/2
+print(AVS[200]==N)
