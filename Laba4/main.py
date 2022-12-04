@@ -18,8 +18,11 @@ def FillDataSet() -> list:
     return Dog
 
 def WriteInCSV( dataSet: list, fileName: str):
-    with open(fileName, "w", newFileName="") as file:
+    with open(fileName, "w", newline="") as file:
         wr = csv.writer(file, delimiter=';')
         wr.writerow(dataSet)
 
+
+
+WriteInCSV(FillDataSet(), FILENAME) # заполнение таблицы
 
