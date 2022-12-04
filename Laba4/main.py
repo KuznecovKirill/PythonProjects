@@ -2,7 +2,7 @@ import csv
 import random
 from MapAndReduce import MyMap, MyReduce
 FILENAME: str = "Laba4/DataSet.csv" # файл с изначальными данными
-OUTFILE: str = "NewDataSet.csv" # файл с преобразованными данными
+OUTFILE: str = "Laba4/NewDataSet.csv" # файл с преобразованными данными
 
 def FillDataSet() -> list:
     breed: list = ["Мопс","Пудель","Английский бульдог","Долматинец","Чау-чау","Бигль","Доберман"]
@@ -18,11 +18,17 @@ def FillDataSet() -> list:
         i += 1
     return Dog
 
-def WriteInCSV(dataSet: list, fileName: str):
+def WriteInCSV(dataSet: list, fileName: str): # Запись файла из списка 
     with open(fileName, "w", newline="") as file:
         wr = csv.writer(file, delimiter=';')
         wr.writerow(dataSet)
 
+def WriteInCSVFromDict(dataSet: list, fileName: str): #Запись файла из словаря
+    with open(fileName, "w", newline="") as file:
+        columns =list(dataSet[0].keys())
+        writer = csv.DictWriter(file, fieldnames=columns, delimiter=';')
+        writer.writeheader()
+        writer.writerow(dataSet)
 
 def ReadFromCSV(fileName: str) -> list: # Чтение файла
     with open(fileName, "r", newline="") as file:
@@ -43,4 +49,8 @@ def SplitDog(originalDict: dict) -> dict: #Разделение первого �
 
 
 WriteInCSV(FillDataSet(), FILENAME) # заполнение таблицы
+
+# Задание 1: Разделение столбца Собака на 3 новых столбца с помощью map в новый файл csv
+dataSet: list = ReadFromCSV(FILENAME)
+newDataSet: list = MyMap(SplitDog, dataSet)
 
