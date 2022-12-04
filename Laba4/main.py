@@ -1,6 +1,7 @@
 import csv
 import random
-FILENAME: str = "DataSet.csv" # файл с изначальными данными
+from MapAndReduce import MyMap, MyReduce
+FILENAME: str = "Laba4/DataSet.csv" # файл с изначальными данными
 OUTFILE: str = "NewDataSet.csv" # файл с преобразованными данными
 
 def FillDataSet() -> list:
@@ -21,6 +22,15 @@ def WriteInCSV(dataSet: list, fileName: str):
     with open(fileName, "w", newline="") as file:
         wr = csv.writer(file, delimiter=';')
         wr.writerow(dataSet)
+
+
+def ReadFromCSV(fileName: str) -> list: # Чтение файла
+    with open(fileName, "r", newline="") as file:
+        reader = csv.DictReader(file)
+        newListDict = list()
+        for dict in reader:
+            newListDict.append(dict)
+    return newListDict
 
 def SplitDog(originalDict: dict) -> dict: #Разделение первого столбца на 3 новых
     newDict = dict()
