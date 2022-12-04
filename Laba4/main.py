@@ -10,18 +10,26 @@ def FillDataSet() -> list:
     Dog = list()
     i: int = 0
     countDog: int = 40
-    Dog.append(["Собака и её родина","Возраст"])
+    Dog.append(["Собака","Возраст"])
     while i < countDog:
         randomDog = breed[random.randint(0, len(breed) - 1)] + " " + name[random.randint(0, len(name) - 1)] + " " + country[random.randint(0, len(country) - 1)]
         Dog.append([randomDog, random.randint(0,11)])
         i += 1
     return Dog
 
-def WriteInCSV( dataSet: list, fileName: str):
+def WriteInCSV(dataSet: list, fileName: str):
     with open(fileName, "w", newline="") as file:
         wr = csv.writer(file, delimiter=';')
         wr.writerow(dataSet)
 
+def SplitDog(originalDict: dict) -> dict: #Разделение первого столбца на 3 новых
+    newDict = dict()
+    strs = originalDict["Собака"].split(' ')
+    newDict["Порода"] = strs[0]
+    newDict["Имя"] = strs[1]
+    newDict["Родина"] = strs[2]
+    newDict["Возраст"] = originalDict["Возраст"]
+    return newDict
 
 
 WriteInCSV(FillDataSet(), FILENAME) # заполнение таблицы
