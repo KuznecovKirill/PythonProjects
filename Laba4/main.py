@@ -6,8 +6,8 @@ OUTFILE: str = "NewDataSet.csv" # файл с преобразованными �
 def FillDataSet() -> list:
     breed: list = ["Мопс","Пудель","Английский бульдог","Долматинец","Чау-чау","Бигль","Доберман"]
     name: list = ["Олег", "Лео","Барни","Тайсон","Локи","Нора","Рекс","Рокки"]
-    country: list = ["Россия","Франция","Англия","США","Китай","Нидерланды","Швеция"]
-    Dog = list();
+    country: list = ["(Россия)","(Франция)","(Англия)","(США)","(Китай)","(Нидерланды)","(Швеция)"]
+    Dog = list()
     i: int = 0
     countDog: int = 40
     Dog.append(["Собака и её родина","Возраст"])
@@ -16,3 +16,10 @@ def FillDataSet() -> list:
         Dog.append([randomDog, random.randint(0,11)])
         i += 1
     return Dog
+
+def WriteInCSV( dataSet: list, fileName: str):
+    with open(fileName, "w", newFileName="") as file:
+        wr = csv.writer(file, delimiter=';')
+        wr.writerow(dataSet)
+
+
