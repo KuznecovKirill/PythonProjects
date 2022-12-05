@@ -48,9 +48,17 @@ def SplitDog(originalDict: dict) -> dict: #Разделение первого �
     return newDict
 
 
+def GetSumAgeDog(originalDict: dict, originalDict2: dict) ->dict:
+    newDict = dict()
+    newDict["Возраст"] = int(originalDict["Возраст"]) + int(originalDict2["Возраст"])
+    return newDict
+
 WriteInCSV(FillDataSet(), FILENAME) # заполнение таблицы
 # Задание 1: Разделение столбца Собака на 3 новых столбца с помощью map в новый файл csv
 dataSet: list = ReadFromCSV(FILENAME)
 newDataSet: list = MyMap(SplitDog, dataSet)
 WriteInCSVFromDict(newDataSet, OUTPUTFILE)
-
+# Задание 2: Просуммировать возраст собак и найти их среднее значение с помощью reduce
+summ = MyReduce(GetSumAgeDog, dataSet)["Возраст"]
+summ = summ / 40
+print("Средний возраст собак", summ)
